@@ -1,0 +1,37 @@
+# robots.txt for Abby's Gallery Website
+
+# Allow all search engines to crawl everything
+User-agent: *
+
+#FILES AND DIRECTORIES TO ALLOW
+#Admin and Backend Directories:
+Disallow: /backend/
+Disallow: /admin/
+
+#Script and Config Directories:These may include configuration files, scripts, and logs that are not relevant to search engine indexing.
+Disallow: /cgi-bin/ #typically contains scripts and programs.
+Disallow: /scripts/
+Disallow: /config/
+Disallow: /logs/
+
+#Temporary and Private Directories: these directories often contain temporary or private data that should not be indexed.
+Disallow: /tmp/ #often used for temporary files.
+Disallow: /private/ #It might contain sensitive or private files.
+
+
+
+#FILES AND DIRECTORIES TO ALLOW
+#1Public Content Directories: These typically include your main content that you want search engines to index. 
+Allow: /
+
+#2Static Assets:Important for rendering the pages correctly. You generally want to allow search engines to access CSS, JavaScript, and #image files.
+Allow: /index.html/
+Allow: /gallery.html/
+Allow: /about.html/
+Allow: /contact.html/
+Allow: /style.css/
+Allow: /myScript.js/
+
+# Sitemap location
+Sitemap: https://yourdomain.com/sitemap.xml
+#Testing: Use tools like Google Search Console to test your robots.txt file and ensure it’s working as expected.
