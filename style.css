@@ -408,3 +408,28 @@ input[type=text], select, textarea {
   input[type=submit]:hover {
     background-color: #45a049;
   }
+
+/*--------------------------------------------------------------------------------------------*/
+/*404.html*/
+
+.Not-found-page404{
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 50px;
+    background-color: #f4f4f4;
+}
+.Not-found-page404 h1 {
+    color: #333;
+}
+.Not-found-page404 p {
+    color: #666;
+    text-decoration: none;
+}
+.Not-found-page404 a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+.Not-found-page404 a:hover {
+    text-decoration: underline;
+}
