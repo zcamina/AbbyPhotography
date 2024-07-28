@@ -21,14 +21,55 @@ document.addEventListener('DOMContentLoaded', function() {
            "desc2": "Calles"
         }
     };
+    const form = document.getElementById('contactForm');
 
-    // Handle form submission
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Clear previous errors
+        const errors = document.querySelectorAll('.error');
+        errors.forEach(error => {
+            error.style.display = 'none';
+        });
+
+        let isValid = true;
+
+        // Validate First Name
+        const fname = document.getElementById('fname');
+        if (!fname.value.trim()) {
+            document.getElementById('fnameError').style.display = 'block';
+            isValid = false;
+        }
+
+        // Validate Email
+        const email = document.getElementById('email');
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        if (!email.value.match(emailPattern)) {
+            document.getElementById('emailError').style.display = 'block';
+            isValid = false;
+        }
+
+        // Validate Message
+        const message = document.getElementById('message');
+        if (!message.value.trim()) {
+            document.getElementById('messageError').style.display = 'block';
+            isValid = false;
+        }
+
+        // If all validations pass
+        if (isValid) {
+            // Form submission logic
+            sendEmail();
+        }
+    });
+   
+    /* // Handle form submission
     var form = document.getElementById('contactForm');
     if (form) {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             sendEmail();
-        });
+        });*/
 
         function sendEmail() {
             var fname = document.getElementById('fname').value;
@@ -60,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     swal("Error", "An unexpected error occurred.", "error");
                 }
             );
-        }
+      /*  }*/
     }
 
     // Handle language switching
