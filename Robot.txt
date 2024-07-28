@@ -29,10 +29,9 @@ Allow: /index.html/
 Allow: /gallery.html/
 Allow: /about.html/
 Allow: /contact.html/
-Allow: /404.html/
 Allow: /style.css/
 Allow: /myScript.js/
 
 # Sitemap location
-Sitemap: https://zcamina.github.io/AbbyPhotography/
+Sitemap: https://yourdomain.com/sitemap.xml
 #Testing: Use tools like Google Search Console to test your robots.txt file and ensure it’s working as expected.
