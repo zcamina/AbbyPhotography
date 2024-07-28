@@ -40,10 +40,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             Email.send({
                 Host: "smtp.elasticemail.com",
-                Username: "your-email@example.com", // Replace with your email
-                Password: "your-password", // Replace with your password
-                To: 'recipient@example.com', // Replace with recipient's email
-                From: "your-email@example.com", // Replace with your email
+                Username: "zcaminacamina@gmail.com", // Replace with your email
+                Password: "E3FE5B08B11B34B7C50618AF5EFD261AB1A8", // Replace with your password
+                To: 'zcaminacamina@gmail.com', // Replace with recipient's email
+                From: "zcaminacamina@gmail.com", // Replace with your email
                 Subject: "Contact Message from Website",
                 Body: body
             }).then(
