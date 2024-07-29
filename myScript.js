@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Define texts for English and Spanish
     const texts = {
         "en": {
             "title": "Welcome to My Photo Gallery",
@@ -16,95 +15,82 @@ document.addEventListener('DOMContentLoaded', function() {
             por la fotografía, con una variedad de temas que van desde paisajes impresionantes hasta momentos espontáneos. Espero 
             que disfrutes explorando mi trabajo tanto como yo disfruté capturando estos momentos. ¡No dudes en ponerte en contacto 
             y compartir tus pensamientos!`,
-           "desc": "Retratos",  
-           "desc1": "Viajes",   
-           "desc2": "Calles"
+            "desc": "Retratos",  
+            "desc1": "Viajes",   
+            "desc2": "Calles"
         }
     };
+
     const form = document.getElementById('contactForm');
 
-    form.addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent form submission
-
-        // Clear previous errors
-        const errors = document.querySelectorAll('.error');
-        errors.forEach(error => {
-            error.style.display = 'none';
-        });
-
-        let isValid = true;
-
-        // Validate First Name
-        const fname = document.getElementById('fname');
-        if (!fname.value.trim()) {
-            document.getElementById('fnameError').style.display = 'block';
-            isValid = false;
-        }
-
-        // Validate Email
-        const email = document.getElementById('email');
-        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-        if (!email.value.match(emailPattern)) {
-            document.getElementById('emailError').style.display = 'block';
-            isValid = false;
-        }
-
-        // Validate Message
-        const message = document.getElementById('message');
-        if (!message.value.trim()) {
-            document.getElementById('messageError').style.display = 'block';
-            isValid = false;
-        }
-
-        // If all validations pass
-        if (isValid) {
-            // Form submission logic
-            sendEmail();
-        }
-    });
-   
-    /* // Handle form submission
-    var form = document.getElementById('contactForm');
     if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            sendEmail();
-        });*/
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
 
-        function sendEmail() {
-            var fname = document.getElementById('fname').value;
-            var lname = document.getElementById('lname').value;
-            var email = document.getElementById('email').value;
-            var phone = document.getElementById('phone').value;
-            var message = document.getElementById('message').value;
-            var body = `Name: ${fname}<br> Last Name: ${lname}<br/> Email: ${email}<br/> Phone: ${phone}<br/> Message: ${message}`;
+            const errors = document.querySelectorAll('.error');
+            errors.forEach(error => {
+                error.style.display = 'none';
+            });
 
-            Email.send({
-                Host: "smtp.elasticemail.com",
-                Username: "zcaminacamina@gmail.com", // Replace with your email
-                Password: "E3FE5B08B11B34B7C50618AF5EFD261AB1A8", // Replace with your password
-                To: 'zcaminacamina@gmail.com', // Replace with recipient's email
-                From: "zcaminacamina@gmail.com", // Replace with your email
-                Subject: "Contact Message from Website",
-                Body: body
-            }).then(
-                message => {
-                    if (message === 'OK') {
-                        swal("Successful!", "Your message was sent!", "success");
-                    } else {
-                        swal("Error", "Failed to send message.", "error");
-                    }
-                }
-            ).catch(
-                error => {
-                    console.error(error);
-                    swal("Error", "An unexpected error occurred.", "error");
-                }
-            );
-      /*  }*/
+            let isValid = true;
+
+            const fname = document.getElementById('fname');
+            if (!fname.value.trim()) {
+                document.getElementById('fnameError').style.display = 'block';
+                isValid = false;
+            }
+
+            const email = document.getElementById('email');
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!email.value.match(emailPattern)) {
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            }
+
+            const message = document.getElementById('message');
+            if (!message.value.trim()) {
+                document.getElementById('messageError').style.display = 'block';
+                isValid = false;
+            }
+
+            if (isValid) {
+                sendEmail();
+            }
+        });
     }
 
-    // Handle language switching
+    function sendEmail() {
+        const fname = document.getElementById('fname').value;
+        const lname = document.getElementById('lname').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const message = document.getElementById('message').value;
+        const body = `Name: ${fname}<br> Last Name: ${lname}<br/> Email: ${email}<br/> Phone: ${phone}<br/> Message: ${message}`;
+
+        Email.send({
+            Host: "smtp.elasticemail.com",
+            Username: "zcaminacamina@gmail.com",
+            Password: "E3FE5B08B11B34B7C50618AF5EFD261AB1A8 ",
+            To: 'zcamincamin@gamil.com',
+            From: "zcaminacamina@gmail.com",
+            Subject: "Contact Message from Website",
+            Body: body
+        }).then(
+            message => {
+                if (message === 'OK') {
+                    swal("Successful!", "Your message was sent!", "success");
+                } else {
+                    swal("Error", "Failed to send message.", "error");
+                }
+            }
+        ).catch(
+            error => {
+                console.error(error);
+                swal("Error", "An unexpected error occurred.", "error");
+            }
+        );
+    }
+
     const buttons = document.querySelectorAll('.lang-btn');
     const textTitle = document.getElementById('title');
     const textIntroText = document.getElementById('intro-text');
@@ -112,20 +98,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const textDesc1 = document.getElementById('desc1');
     const textDesc2 = document.getElementById('desc2');
 
-    // Add click event listeners to language buttons
     buttons.forEach(button => {
         button.addEventListener('click', () => {
             const language = button.getAttribute('language');
+            console.log(`Language button clicked: ${language}`); // Debug log
             updateContent(language);
             highlightActiveButton(language);
-            // Store the selected language in localStorage
             localStorage.setItem('language', language);
         });
     });
 
     function updateContent(language) {
         textTitle.textContent = texts[language]['title'];
-        textIntroText.textContent = texts[language]['intro-text'];
+        textIntroText.innerHTML = texts[language]['intro-text']; // Use innerHTML for multiline text
         textDesc.textContent = texts[language]['desc'];
         textDesc1.textContent = texts[language]['desc1'];
         textDesc2.textContent = texts[language]['desc2'];
@@ -140,7 +125,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Set initial language from localStorage or default to English
     const storedLang = localStorage.getItem('language');
     const lang = storedLang || 'en';
     updateContent(lang);
