@@ -36,19 +36,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const fname = document.getElementById('fname');
             if (!fname.value.trim()) {
+                document.getElementById('fnameError').textContent = 'First name is required.';
                 document.getElementById('fnameError').style.display = 'block';
+                isValid = false;
+            }
+
+            const lname = document.getElementById('lname');
+            if (!lname.value.trim()) {
+                document.getElementById('lnameError').textContent = 'Last name is required.';
+                document.getElementById('lnameError').style.display = 'block';
                 isValid = false;
             }
 
             const email = document.getElementById('email');
             const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
             if (!email.value.match(emailPattern)) {
+                document.getElementById('emailError').textContent = 'A valid email is required.';
                 document.getElementById('emailError').style.display = 'block';
                 isValid = false;
             }
 
             const message = document.getElementById('message');
             if (!message.value.trim()) {
+                document.getElementById('messageError').textContent = 'Message is required.';
                 document.getElementById('messageError').style.display = 'block';
                 isValid = false;
             }
@@ -70,8 +80,8 @@ document.addEventListener('DOMContentLoaded', function() {
         Email.send({
             Host: "smtp.elasticemail.com",
             Username: "zcaminacamina@gmail.com",
-            Password: "E3FE5B08B11B34B7C50618AF5EFD261AB1A8 ",
-            To: 'zcamincamin@gamil.com',
+            Password: "E3FE5B08B11B34B7C50618AF5EFD261AB1A8",
+            To: 'zcaminacamina@gmail.com',
             From: "zcaminacamina@gmail.com",
             Subject: "Contact Message from Website",
             Body: body
@@ -80,12 +90,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (message === 'OK') {
                     swal("Successful!", "Your message was sent!", "success");
                 } else {
+                    console.error("Email sending failed: ", message);
                     swal("Error", "Failed to send message.", "error");
                 }
             }
         ).catch(
             error => {
-                console.error(error);
+                console.error("Email sending encountered an error: ", error);
                 swal("Error", "An unexpected error occurred.", "error");
             }
         );
@@ -101,7 +112,6 @@ document.addEventListener('DOMContentLoaded', function() {
     buttons.forEach(button => {
         button.addEventListener('click', () => {
             const language = button.getAttribute('language');
-            console.log(`Language button clicked: ${language}`); // Debug log
             updateContent(language);
             highlightActiveButton(language);
             localStorage.setItem('language', language);
@@ -110,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateContent(language) {
         textTitle.textContent = texts[language]['title'];
-        textIntroText.innerHTML = texts[language]['intro-text']; // Use innerHTML for multiline text
+        textIntroText.innerHTML = texts[language]['intro-text'];
         textDesc.textContent = texts[language]['desc'];
         textDesc1.textContent = texts[language]['desc1'];
         textDesc2.textContent = texts[language]['desc2'];
