@@ -11,7 +11,7 @@ on:
 
 jobs:
   test:
-  
+
     #Integrate HTML validation into your CI/CD pipeline. You can use tools like HTMLHint (which is available as an NPM package) to 
     #automate checking your HTML for syntax errors and best practices.
     html-lint:
@@ -26,7 +26,7 @@ jobs:
       
       #Run HTMLHint to lint HTML files
       - name: Run HTMLHint
-        run:  npx htmlhint 'AbbyPhotography/**/*.html'
+        run:  npx htmlhint '**/*.html'
         #The npx command is used to run binaries from the node_modules/.bin directory, making sure that the locally installed 
         #versions of htmlhint and stylelint are executed.
 
@@ -42,7 +42,7 @@ jobs:
 
       # Run Stylelint to lint CSS files
       - name: Run Stylelint
-        run: npx stylelint 'AbbyPhotography/**/*.css'
+        run: npx stylelint '**/*.css'
       
     javascript-selenium:
       runs-on: ubuntu-latest
@@ -67,7 +67,7 @@ jobs:
 
       # Run Selenium tests using Jest
       - name: Run Selenium Tests
-        run: npx jest 'AbbyPhotography/workflows/**/*.test.js'
+        run: npx jest '**/*.test.js'
 
 
 
