@@ -16,15 +16,33 @@ jobs:
     html-lint:
       runs-on: ubuntu-latest
       steps:
+      #Check out the repository
       - uses: actions/checkout@v2
+
+      #Install HTMLHint to validate HTML files
       - name: Install HTMLHint
         run: npm install htmlhint
+      
+      #Run HTMLHint to lint HTML files
       - name: Run HTMLHint
         run:  npx htmlhint 'path/to/your/html/files/**/*.html'
         #The npx command is used to run binaries from the node_modules/.bin directory, making sure that the locally installed 
         #versions of htmlhint and stylelint are executed.
 
-    
+    css-lint:
+      runs-on: ubuntu-latest
+      steps:
+      # Check out the repository
+      - uses: actions/checkout@v2
+
+      # Install Stylelint to lint CSS files
+      - name: Install Stylelint
+        run: npm install stylelint
+
+      # Run Stylelint to lint CSS files
+      - name: Run Stylelint
+        run: npx stylelint 'path/to/your/css/files/**/*.css'
+      
        
 
 
