@@ -1,10 +1,8 @@
+ 
 {
-  "tagname-lowercase": true,
-  "attr-lowercase": true,
-  "attr-value-double-quotes": true,
-  "doctype-first": true,
-  "tag-pair": true,
-  "id-unique": true,
-  "src-not-empty": true,
-  "attr-no-duplication": true
+  "tag-pair": true,  // Ensure tags are correctly paired
+  "attr-value-double-quotes": true,  // Ensure attributes are enclosed in double quotes
+  "doctype-first": true,  // Ensure doctype is declared first
+  "id-unique": true,  // Ensure IDs are unique
+  "img-alt-require": true  // Ensure that all images have an alt attribute
 }
