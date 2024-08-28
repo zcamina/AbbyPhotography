@@ -45,7 +45,7 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}  # This token is automatically provided by GitHub Actions
-        publish_dir: ./AbbyPhotography  # Directory to publish 
+        publish_dir: ./AbbyPhotography  
        
 
     
