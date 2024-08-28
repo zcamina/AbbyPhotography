@@ -26,7 +26,7 @@ jobs:
       
       #Run HTMLHint to lint HTML files
       - name: Run HTMLHint
-        run:  npx htmlhint '**/*.html'
+        run:  npx htmlhint '**/*.html' --config .htmlhintrc
         #The npx command is used to run binaries from the node_modules/.bin directory, making sure that the locally installed 
         #versions of htmlhint and stylelint are executed.
 
