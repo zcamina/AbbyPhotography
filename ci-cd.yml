@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: CI CD Pipeline
 
 #Triggers the workflow on push and pull reques, only for "main" branch
 on:
@@ -69,6 +69,25 @@ jobs:
       - name: Run Selenium Tests
         run: npx jest '**/*.test.js'
 
+  deploy:
+    html-lint:
+    # Job to deploy the project after successful linting
+    runs-on: ubuntu-latest
+    needs: test  # Ensures that this job only runs if the 'test' job succeeds
+    
+    steps:
+    # Step 1: Check out the repository again
+    - uses: actions/checkout@v2
+
+    # Step 2: Deploy to Netlify (example deployment)
+    - name: Deploy to Netlify
+      uses: nwtgck/actions-netlify@v1.1
+      with:
+        publish-dir: ./public
+        production-deploy: true
+      env:
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
 
     
