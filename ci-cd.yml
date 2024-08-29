@@ -26,7 +26,7 @@ jobs:
       
       #Run HTMLHint to lint HTML files
       - name: Run HTMLHint
-        run:  npx htmlhint '**/*.html' --config .htmlhintrc
+        run:  npx htmlhint './AbbyPhotography/**/*.html' --config ./AbbyPhotography/.htmlhintrc
         #The npx command is used to run binaries from the node_modules/.bin directory, making sure that the locally installed 
         #versions of htmlhint and stylelint are executed.
 
@@ -43,7 +43,7 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}  # This token is automatically provided by GitHub Actions
-        publish_dir: ./AbbyPhotography/workflows
+        publish_dir: ./AbbyPhotography
        
 
     
