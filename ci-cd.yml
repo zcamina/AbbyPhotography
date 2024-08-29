@@ -30,7 +30,44 @@ jobs:
         #The npx command is used to run binaries from the node_modules/.bin directory, making sure that the locally installed 
         #versions of htmlhint and stylelint are executed.
 
+     css-lint:
+      runs-on: ubuntu-latest
+      steps:
+      # Check out the repository
+      - uses: actions/checkout@v2
 
+      # Install Stylelint to lint CSS files
+      - name: Install Stylelint
+        run: npm install stylelint
+
+      # Run Stylelint to lint CSS files
+      - name: Run Stylelint
+        run: npx stylelint '**/*.css'
+      
+    javascript-selenium:
+      runs-on: ubuntu-latest
+      services:
+        selenium:
+          image: selenium/standalone-chrome
+          ports:
+            - 4444:4444
+      steps:
+      # Check out the repository
+      - uses: actions/checkout@v2
+
+      # Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      # Install dependencies required for Selenium tests
+      - name: Install Dependencies
+        run: npm install selenium-webdriver jest
+
+      # Run Selenium tests using Jest
+      - name: Run Selenium Tests
+        run: npx jest '**/*.test.js'
 
   deploy:
     runs-on: ubuntu-latest
