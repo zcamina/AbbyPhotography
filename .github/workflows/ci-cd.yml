@@ -34,8 +34,17 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-
+        uses: actions/checkout@v3
+      
+      - name: Set up Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git 
+      
+      - name: Ensure working directory is clean
+        run: git diff --quiet || git checkout -- .
+        
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
