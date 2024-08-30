@@ -41,7 +41,7 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git 
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
       
       - name: Ensure working directory is clean
         run: git diff --quiet || git checkout -- .
@@ -51,7 +51,7 @@ jobs:
           git remote -v
           git status
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages #GitHub Action to deploy your static files to GitHub Pages.
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }} # This token is automatically provided by GitHub Actions
