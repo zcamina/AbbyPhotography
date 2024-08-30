@@ -35,14 +35,14 @@ jobs:
     
     steps:
     # Step 1: Check out the repository again
-    - uses: actions/checkout@v2
+    uses: actions/checkout@v2
 
     # Step 2: Deploy to GitHub Pages
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}  # This token is automatically provided by GitHub Actions
-        publish_dir: ./AbbyPhotography
+    name: Deploy to GitHub Pages
+    uses: peaceiris/actions-gh-pages@v3
+    with:
+      github_token: ${{ secrets.GITHUB_TOKEN }}  # This token is automatically provided by GitHub Actions
+      publish_dir: ./AbbyPhotography
        
 
     
