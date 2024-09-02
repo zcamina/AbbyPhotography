@@ -18,23 +18,27 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: main  # Checking out the main branch
 
       - name: Install HTMLHint
         run: npm install htmlhint
 
-      # Changed name to make it unique
+      # Run HTMLHint on all HTML files
       - name: Run HTMLHint
-        run: npx htmlhint './AbbyPhotography/**/*.html' --config ./AbbyPhotography/.htmlhintrc
+        run: npx htmlhint './AbbyPhotography/**/*.html' 
         #The npx command is used to run binaries from the node_modules/.bin directory, making sure that the locally installed versions of htmlhint and stylelint are executed.
-
+        #npx runs the locally installed htmlhint, checking all .html files
 
   deploy:
     runs-on: ubuntu-latest
-    needs: test  # Ensures that this job only runs if the 'test' job succeeds
+    needs: test  #This job only runs if the 'test' job succeeds
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: gh-pages  #Deploying from the gh-pages branch
       
       - name: Set up Git
         #setting up authentication for Git operations.
