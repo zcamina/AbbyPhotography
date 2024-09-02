@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install HTMLHint
         run: npm install htmlhint
@@ -34,7 +34,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       
       - name: Set up Git
         #setting up authentication for Git operations.
@@ -52,7 +52,7 @@ jobs:
           git status
 
       - name: Deploy to GitHub Pages #GitHub Action to deploy your static files to GitHub Pages.
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }} # This token is automatically provided by GitHub Actions
           publish_dir: ./AbbyPhotography
