@@ -1,0 +1,51 @@
+name: CI for HTML, CSS, and JS
+
+#Triggers the workflow on push and pull reques, only for "main" branch
+on:
+  push:
+    branches: [ main ] 
+  pull_request:
+    branches: [ main ]
+  #Allows you to manually trigger a workflow run 
+  workflow_dispatch:
+
+ 
+jobs:
+  lint-html:
+     #Integrate HTML validation into your CI/CD pipeline. You can use tools like HTMLHint (which is available as an NPM package) to automate checking your HTML for syntax errors and best practices.
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: main  # Checking out the main branch
+    
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install HTMLHint
+        run: npm install htmlhint
+
+      # Run HTMLHint on all HTML files
+      - name: Run HTMLHint
+        run: htmlhint "**/*.html"
+  lint-css:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install Stylelint
+      run: npm install -g stylelint stylelint-config-standard
+
+    - name: Run Stylelint
+      run: stylelint "**/*.css"     
