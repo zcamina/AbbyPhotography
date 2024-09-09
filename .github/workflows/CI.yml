@@ -12,24 +12,45 @@ on:
  
 jobs:
   lint-html:
-     #Integrate HTML validation into your CI/CD pipeline. You can use tools like HTMLHint (which is available as an NPM package) to automate checking your HTML for syntax errors and best practices.
+     #Integrate HTML validation into your CI/CD pipeline. You can use tools like HTMLHint 
+     #(which is available as an NPM package) to automate 
+     #checking your HTML for syntax errors and best practices.
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        with:
-          ref: main  # Checking out the main branch
     
-      - name: Set up Node.js 20
+      - name: Set up Node.js 20 #I need Node.js installed to use NPM and install the htmlhint package.
         uses: actions/setup-node@v3
         with:
           node-version: '20' 
 
       - name: Install HTMLHint
-        run: npm install -g htmlhint
+        run: npm install -g htmlhint 
+        #g global installation, the package will be installed globally on the system 
+        #(rather than just in the project folder). This makes htmlhint accessible anywhere in the environment, 
+        #without needing a local project-specific installation.
 
       # Run HTMLHint on all HTML files
       - name: Run HTMLHint
         run: htmlhint "**/*.html"
+ 
+  lint-css:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install Stylelint
+        run: npm install -g stylelintrc 
+
+      - name: Run Stylelint
+        run: stylelint "**/*.css"  
     

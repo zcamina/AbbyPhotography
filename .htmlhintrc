@@ -1,5 +1,6 @@
 {
-  "tag-pair": true, 
+  "tag-pair": true,
+  "tag-self-close": false,  // Disable XHTML self-closing requirement 
   "attr-value-double-quotes": true,  
   "doctype-first": true,  
   "id-unique": true,  

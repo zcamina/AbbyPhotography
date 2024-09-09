@@ -1,0 +1,13 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "color-no-invalid-hex": true,                // Disallow invalid hex colors
+    "declaration-colon-space-after": "always",   // Ensure there is a space after the colon in declarations
+    "max-empty-lines": 1,                       // Maximum number of consecutive empty lines
+    "no-extra-semicolons": true,                 // Disallow extra semicolons
+    "no-duplicate-selectors": true,              // Disallow duplicate selectors
+    "string-quotes": "single",                   // Enforce single quotes for strings
+    "color-hex-case": "lower",                   // Enforce lowercase hex colors
+    "declaration-block-trailing-semicolon": "always"  // Ensure declarations blocks end with a semicolon
+  }
+}
