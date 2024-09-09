@@ -1,3 +1,4 @@
+#Performs linting for HTML and CSS files. Ensure the correct Stylelint installation and commands.
 name: CI for HTML, CSS, and JS
 
 #Triggers the workflow on push and pull reques, only for "main" branch
@@ -49,7 +50,7 @@ jobs:
           node-version: '20'
 
       - name: Install Stylelint
-        run: npm install -g stylelintrc 
+        run: npm install -g stylelint stylelint-config-standard #It is the standard configuration for Stylelint, and it ensures Stylelint is configured properly.
 
       - name: Run Stylelint
         run: stylelint "**/*.css"  
