@@ -25,7 +25,7 @@ This webpage is designed to showcase my friend's passion for photography, allowi
 ### Deployment Process
 1. Develop and commit changes to the `main` branch.
 2. After testing, merge the changes into the `gh-pages` branch for deployment.
-3. GitHub Pages will serve the site from the `gh-pages` branch, making the site live at `https://your-username.github.io/your-repository/`.
+3. GitHub Pages will serve the site from the `gh-pages` branch, making the site live at `https://zcamina.github.io/AbbyPhotography/`.
 
 ### Deployment Automation using GitHub Actions
 - A workflow file located in `.github/workflows` automatically triggers the deployment to the `gh-pages` branch whenever changes are pushed to `main`.
